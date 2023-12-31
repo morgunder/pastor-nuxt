@@ -7,17 +7,17 @@ export default eventHandler(async (event) => {
   })
   const session = await requireUserSession(event)
 
-  // List todos for the current user
-  const deletedTodo = await useDB().delete(tables.todos).where(and(
-    eq(tables.todos.id, id),
-    eq(tables.todos.userId, session.user.id)
+  // List requests for the current user
+  const deletedRequest = await useDB().delete(tables.requests).where(and(
+    eq(tables.requests.id, id),
+    eq(tables.requests.userId, session.user.id)
   )).returning().get()
-  
-  if (!deletedTodo) {
+
+  if (!deletedRequest) {
     throw createError({
       statusCode: 404,
-      message: 'Todo not found'
+      message: 'Request not found'
     })
   }
-  return deletedTodo
+  return deletedRequest
 })

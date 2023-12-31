@@ -15,7 +15,6 @@
     "@nuxt/ui": "^2.11.0",
     "better-sqlite3": "^9.2.2",
     "bufferutil": "^4.0.8",
-    "drizzle-kit": "^0.20.6",
     "drizzle-orm": "^0.29.1",
     "h3-zod": "^0.5.2",
     "nuxt": "^3.8.2",
@@ -26,6 +25,7 @@
   "devDependencies": {
     "@nuxt/devtools": "^1.0.5",
     "@nuxt/eslint-config": "^0.2.0",
+    "drizzle-kit": "^0.20.6",
     "eslint": "^8.55.0",
     "typescript": "5.3.3"
   }

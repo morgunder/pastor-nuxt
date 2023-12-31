@@ -10,7 +10,8 @@ if (host.includes('.netlify.app')) {
 } else if (host.includes('.deno.dev')) {
   hosting = { url: 'https://deno.com/deploy', title: 'Deno Deploy' }
 }
-const isD1 = host.includes('nuxt-todos-edge.pages.dev')
+const isD1 = host.includes('pages.dev')
+
 const { loggedIn } = useUserSession()
 </script>
 
@@ -18,7 +19,7 @@ const { loggedIn } = useUserSession()
   <UCard>
     <template #header>
       <h3 class="text-lg font-semibold leading-6">
-        Todo List
+        Prayer List
       </h3>
       <UButton
         v-if="!loggedIn"
@@ -30,14 +31,14 @@ const { loggedIn } = useUserSession()
       />
       <UButton
         v-else
-        to="/todos"
+        to="/list"
         icon="i-heroicons-list-bullet"
-        label="Go to Todos"
+        label="Prayer List"
         color="black"
       />
     </template>
     <p class="font-medium">
-      Welcome to Nuxt Todos Edge.
+      Welcome to Pastor Hal on Nuxt Edge.
     </p>
     <p>
       A <a href="https://nuxt.com" target="_blank" class="text-primary-500" rel="noopener">Nuxt</a> demo hosted on <a :href="hosting.url" target="_blank" rel="noopener" class="text-primary-500">{{ hosting.title }}</a> with server-side rendering on the edge and using <NuxtLink
