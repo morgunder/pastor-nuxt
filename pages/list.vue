@@ -44,7 +44,7 @@ async function addrequest () {
   loading.value = false
 }
 
-async function togglerequest (request) {
+async function toggleRequest (request) {
   request.completed = Number(!request.completed)
   await useFetch(`/api/requests/${request.id}`, {
     method: 'PATCH',
@@ -54,10 +54,40 @@ async function togglerequest (request) {
   })
 }
 
-async function deleterequest (request) {
+async function togglePrayed (request) {
+  request.completed = Number(!request.completed)
+  await useFetch(`/api/requests/${request.id}`, {
+    method: 'PATCH',
+    body: {
+      completed: request.completed
+    }
+  })
+}
+
+async function generatePrayer (request) {
+  // request.completed = Number(!request.completed)
+  // await useFetch(`/api/requests/${request.id}`, {
+  //   method: 'PATCH',
+  //   body: {
+  //     completed: request.completed
+  //   }
+  // })
+}
+
+async function generateScripture (request) {
+  // request.completed = Number(!request.completed)
+  // await useFetch(`/api/requests/${request.id}`, {
+  //   method: 'PATCH',
+  //   body: {
+  //     completed: request.completed
+  //   }
+  // })
+}
+
+async function archiveRequest (request) {
   await useFetch(`/api/requests/${request.id}`, { method: 'DELETE' })
   requests.value = requests.value.filter(t => t.id !== request.id)
-  toast.add({ title: `request "${request.title}" deleted.` })
+  toast.add({ title: `Prayer "${request.name}" about "${request.title}" deleted.` })
 }
 
 const items = [[{
@@ -119,15 +149,46 @@ const items = [[{
       >
         <span class="flex-1 font-medium" :class="[request.completed ? 'line-through text-gray-500' : '']">{{ request.name }} about {{ request.title }}</span>
 
-        <UToggle :model-value="Boolean(request.completed)" @update:model-value="togglerequest(request)" />
 
-        <UButton
-          color="red"
-          variant="soft"
-          size="2xs"
-          icon="i-heroicons-x-mark-20-solid"
-          @click="deleterequest(request)"
-        />
+        <UTooltip text="Mark Prayed">
+          <UToggle
+            on-icon="i-guidance-praying-room"
+            off-icon="i-guidance-praying-room"
+            :model-value="Boolean(request.completed)"
+            @update:model-value="togglePrayed(request)"
+            />
+        </UTooltip>
+
+        <UTooltip text="Generate Prayer">
+          <UButton
+            color="blue"
+            variant="soft"
+            size="2xs"
+            icon="i-game-icons-artificial-intelligence"
+            @click="generatePrayer(request)"
+          />
+        </UTooltip>
+
+        <UTooltip text="Generate Scriptures">
+          <UButton
+            color="blue"
+            variant="soft"
+            size="2xs"
+            icon="i-arcticons-quick-bible"
+            @click="generateScripture(request)"
+          />
+        </UTooltip>
+
+        <UTooltip text="Archive Prayer">
+          <UButton
+            color="red"
+            variant="soft"
+            size="2xs"
+            icon="i-heroicons-x-mark-20-solid"
+            @click="archiveRequest(request)"
+          />
+        </UTooltip>
+
       </li>
     </ul>
   </UCard>

@@ -8,6 +8,13 @@
       "when": 1703996359595,
       "tag": "0000_sturdy_strong_guy",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1703997646994,
+      "tag": "0001_fresh_shinko_yamashiro",
+      "breakpoints": true
     }
   ]
 }

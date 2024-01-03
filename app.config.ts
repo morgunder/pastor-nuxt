@@ -17,6 +17,9 @@ export default defineAppConfig({
       popper: {
         strategy: 'absolute'
       }
+    },
+    icons: {
+      dynamic: true
     }
   }
 })
