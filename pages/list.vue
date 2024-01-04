@@ -13,6 +13,7 @@ const title = ref('')
 const toast = useToast()
 const { user, clear } = useUserSession()
 const { data: requests } = await useFetch('/api/requests')
+const { data: helloworld } = await useFetch('/api/helloworld')
 
 async function addrequest () {
   if (!title.value.trim()) { return }
@@ -102,7 +103,7 @@ const items = [[{
     <template #header>
       <h3 class="text-lg font-semibold leading-6">
         <NuxtLink to="/">
-          My Prayer List
+          My Prayer List [{{ helloworld }}]
         </NuxtLink>
       </h3>
 
