@@ -1,15 +1,5 @@
 <script setup lang="ts">
 const host = useRequestURL().host
-let hosting = { url: 'https://pages.cloudflare.com', title: 'CloudFlare Pages' }
-if (host.includes('.netlify.app')) {
-  hosting = { url: 'https://www.netlify.com/products/#netlify-edge-functions', title: 'Netlify Edge Functions' }
-} else if (host.includes('.vercel.app')) {
-  hosting = { url: 'https://vercel.com/features/edge-functions', title: 'Vercel Edge Functions' }
-} else if (host.includes('.lagon.dev')) {
-  hosting = { url: 'https://lagon.app', title: 'Lagon' }
-} else if (host.includes('.deno.dev')) {
-  hosting = { url: 'https://deno.com/deploy', title: 'Deno Deploy' }
-}
 const isD1 = host.includes('pages.dev')
 
 const { loggedIn } = useUserSession()
