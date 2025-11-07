@@ -23,7 +23,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@nuxt/devtools": "^1.0.5",
+    "@nuxt/devtools": "^2.6.4",
     "@nuxt/eslint-config": "^0.2.0",
     "drizzle-kit": "^0.20.6",
     "eslint": "^8.55.0",
